@@ -1,8 +1,14 @@
-import data_input_output.help.Help;
+import multithreaded_programming.MyThread;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Help info = new Help("D:\\Education\\Java\\first_app\\src\\Shildt\\_10\\_2\\helpfile.txt");
-        info.info("do");
+        Thread thread1 = new Thread(new MyThread("thread1"));
+        Thread thread2 = new Thread(new MyThread("thread2"));
+        thread1.start();
+        thread2.start();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Основной поток. Счетчик: " + i);
+        }
+        System.out.println("Основной поток. Завершен");
     }
 }
