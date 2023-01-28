@@ -1,9 +1,9 @@
 package multithreaded_programming;
 
-public class MyThread implements Runnable {
+public class RunnableThread implements Runnable {
     String threadName;
 
-    public MyThread(String threadName) {
+    public RunnableThread(String threadName) {
         this.threadName = threadName;
     }
 
