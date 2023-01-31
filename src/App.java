@@ -1,14 +1,16 @@
-import multithreaded_programming.RunnableThread;
+import multithreaded_programming.MyThread;
+import multithreaded_programming.TickTock;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        Thread thread1 = new Thread(new RunnableThread("thread1"));
-        Thread thread2 = new Thread(new RunnableThread("thread2"));
-        thread1.start();
-        thread2.start();
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Основной поток. Счетчик: " + i);
+    public static void main(String[] args) {
+        TickTock clock = new TickTock();
+        MyThread tickThread = MyThread.createAndStart("Tick", clock);
+        MyThread tockThread = MyThread.createAndStart("Tock", clock);
+        try {
+            tickThread.thread.join();
+            tockThread.thread.join();
+        } catch (InterruptedException e) {
+            System.out.println("Прерывание основного потока");
         }
-        System.out.println("Основной поток. Завершен");
     }
 }
