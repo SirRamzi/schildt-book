@@ -11,6 +11,7 @@ public class App {
             tockThread.thread.join();
         } catch (InterruptedException e) {
             System.out.println("Прерывание основного потока");
+            System.out.println("Git test");
         }
     }
 }
